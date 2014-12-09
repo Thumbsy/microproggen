@@ -1,4 +1,4 @@
-/*Opdracht 2a*/
+/* Opdracht 2a */
 
 #include <avr/io.h>
 #include <stdint.h>
@@ -8,10 +8,10 @@
 	Therefore TCNT1 should be loaded with value 65536-900 = 64636
 	if we want the wait-loop to stop when an overflow occurs.	*/
 void wait(void) {
-	TIFR	= (1<<TOV1);	/*Reset TOV1*/
-	TCNT1	= 64636;		/*Load TCNT1*/
+	TIFR	= (1<<TOV1);	/* Reset TOV1 */
+	TCNT1	= 64636;		/* Load TCNT1 */
 	while (!(TIFR & 1<<TOV1)) {
-		/*Do nothing, just wait for the overflow flag to be set*/
+		/* Do nothing, just wait for the overflow flag to be set */
 	}
 }
 
@@ -20,16 +20,16 @@ int main(void) {
 	uint8_t c1, c2, i, mode;
 
 	TCCR1A	= 0x00;
-	TCCR1B	|= (1<<CS12 | 1<<CS10);	/*Set to normal mode with prescaler 1024*/
+	TCCR1B	|= (1<<CS12 | 1<<CS10);	/* Set to normal mode with prescaler 1024 */
 
 	DDRA = 0x00;
 	DDRB = 0xFF;
 	mode = 0x00;
     while (1) {
 		if (PINA == 0x7F) {
-			mode = ~mode; /*When button is pressed, switch pattern mode*/
+			mode = ~mode; /* When button is pressed, switch pattern mode */
 			while (PINA != 0xFF) {
-				/*Wait untill the button is released again*/
+				/* Wait untill the button is released again */
 			}
 		}
 		/*Pattern 1*/
@@ -46,7 +46,7 @@ int main(void) {
 				}
 			}
 		}
-		/*Pattern 2*/
+		/* Pattern 2 */
 		if (mode == 0xFF) {
 	        c1 = 0xA0;
 	        c2 = 0x00;

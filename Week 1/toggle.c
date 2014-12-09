@@ -17,12 +17,12 @@ int main(void) {
 	mode = 0x00;
     while (1) {
 		if (PINA == 0x7F) {
-			mode = ~mode; /*When button is pressed, switch pattern mode*/
+			mode = ~mode; /* When button is pressed, switch pattern mode */
 			while (PINA != 0xFF) {
-				/*Wait untill the button is released again*/
+				/* Wait untill the button is released again */
 			}
 		}
-		/*Pattern 1*/
+		/* Pattern 1 */
 		if (mode == 0x00) {
 			c1 = 0xC0;
 			for (i = 0; i < 4; i++) {
@@ -36,7 +36,7 @@ int main(void) {
 				}
 			}
 		}
-		/*Pattern 2*/
+		/* Pattern 2 */
 		if (mode == 0xFF) {
 	        c1 = 0xA0;
 	        c2 = 0x00;
