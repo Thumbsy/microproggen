@@ -22,9 +22,9 @@ ISR(TIMER1_OVF_vect) {
 	}
 	/* Pattern 1 */
 	if (mode == 0x00) {
-		if (i != 4) {
-			PORTB = ~(c1);
+		if (i != 3) {
 			c1 >>= 2;
+			PORTB = ~(c1);
 			i++;
 		}
 		else {
@@ -35,19 +35,19 @@ ISR(TIMER1_OVF_vect) {
 	}
 	/* Pattern 2 */
 	if (mode == 0xFF) {
-        if (i < 4) {
-            PORTB = ~(c1 | c2);
+        if (i < 3) {
             c1 >>= 1;
+            PORTB = ~(c1 | c2);
 			i++;
 		}
-        else if (i == 5) {
-            PORTB = ~(c1 | c2);
+        else if (i == 4) {
             c1 <<= 1;
+            PORTB = ~(c1 | c2);
 			i++;
 		}
-        else if (i < 10) {
-            PORTB = ~(c1 | c2);
+        else if (i < 9) {
             c1 >>= 1;
+            PORTB = ~(c1 | c2);
 			i++;
 		}
 		else {
