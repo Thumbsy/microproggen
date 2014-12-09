@@ -1,24 +1,26 @@
+/*Opdracht 2a*/
+
 #include <avr/io.h>
 #include <stdint.h>
 #include <util/delay.h>
 
+/*	With a prescale of 1024, 250ms takes 900 clk-cycles.
+	Therefore TCNT1 should be loaded with value 65536-900 = 64636
+	if we want the wait-loop to stop when an overflow occurs.	*/
 void wait(void) {
-    TCNT1H	= 0x03;
-	TCNT1L	= 0x84;
-	/*TCNT1   = 900;*/
-	TIFR	= 1<<TOV1;
-	while (!(TIFR & 1<<TOV1)); 
-	/*while (TIFR != 0b00000100);*/
+	TIFR	= (1<<TOV1);	/*Reset TOV1*/
+	TCNT1	= 64636;		/*Load TCNT1*/
+	while (!(TIFR & 1<<TOV1)) {
+		/*Do nothing, just wait for the overflow flag to be set*/
+	}
 }
 
 int main(void) {
 	void wait(void);
 	uint8_t c1, c2, i, mode;
 
-	TCCR1A	&= ~(1<<WGM11 | 1<<WGM10);
-	TCCR1B	|=   1<<CS12  | 1<<CS10;
-	TCCR1B  &= ~(1<<WGM13 | 1<<WGM12 |1<<CS11);
-	/*TIMSK	 =   1<<TOIE1;*/
+	TCCR1A	= 0x00;
+	TCCR1B	|= (1<<CS12 | 1<<CS10);	/*Set to normal mode with prescaler 1024*/
 
 	DDRA = 0x00;
 	DDRB = 0xFF;
