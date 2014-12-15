@@ -1,6 +1,5 @@
 #include <avr/io.h>
 #include <stdint.h>
-#include <string.h>
 #include <avr/interrupt.h>
 #include "lcd.h"
 
@@ -11,7 +10,21 @@ ISR(TIMER1_OVF_vect) {
 	PORTB	^= 0x20;							/* Invert PB5 (the LED) using an XOR */
 	seconds++;
 	if (seconds == 60) {
-		/* Insert code to measure temperature and set indicators if needed */
+		ADCSRA |= 1<<ADSC | 1<<ADIF;			/* Start conversion and reset interrupt flag */
+		while (~ADCSRA & 1<<ADIF);				/* Wait for conversion to finish */
+		/*
+
+		if (ADC > higher threshold) {
+			status = 1;
+		}
+		else if (ADC < lower threshold) {
+			status = 2;
+		}
+		else {
+			status = 0;
+		}
+
+		*/
 		seconds = 0;
 	}
 
