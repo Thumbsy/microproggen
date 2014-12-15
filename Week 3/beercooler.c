@@ -1,3 +1,11 @@
+/*
+	At 25°C, the NTC has a resistance of 20k Ohm, which is where the ratio R/R25 is 1.000
+	At 5°C, the NTC has a resistance of 50792 Ohm, which is where the ratio R/R25 is 2.5396
+	At 9°C, the NTC has a resistance of 41772 Ohm, which is where the ratio R/R25 is 2.0886
+
+	The thresholds for the low and high temperature threshold respectively: ADC>532 and ADC<482
+*/
+	
 #include <avr/io.h>
 #include <stdint.h>
 #include <avr/interrupt.h>
@@ -9,23 +17,21 @@ ISR(TIMER1_OVF_vect) {
 	static uint8_t seconds = 0;
 	PORTB	^= 0x20;							/* Invert PB5 (the LED) using an XOR */
 	seconds++;
-	if (seconds == 60) {
+	if (seconds == 60) {						/* One minute's passed, measure beer temperature */
 		ADCSRA |= 1<<ADSC | 1<<ADIF;			/* Start conversion and reset interrupt flag */
 		while (~ADCSRA & 1<<ADIF);				/* Wait for conversion to finish */
-		/*
 
-		if (ADC > higher threshold) {
-			status = 1;
+		if (ADC < 482) {
+			status = 1;							/* If ADC is lower than 482, cool the beer */
 		}
-		else if (ADC < lower threshold) {
-			status = 2;
+		else if (ADC > 532) {
+			status = 2;							/* If ADC is higher than 532, heat the beer */
 		}
 		else {
-			status = 0;
+			status = 0;							/* Just about right! */
 		}
-
-		*/
-		seconds = 0;
+		
+		seconds = 0;							/* Reset the seconds-timer so we can count the next minute */
 	}
 
 }
