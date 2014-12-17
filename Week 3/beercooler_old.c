@@ -11,6 +11,8 @@
 #include <avr/interrupt.h>
 #include "lcd.h"
 
+volatile uint8_t status = 0;					/* 0 = perfect, 1 = cool, 2 = heat */
+
 ISR(TIMER1_OVF_vect) {
 	static uint8_t seconds = 0;
 	PORTB	^= 0x20;							/* Invert PB5 (the LED) using an XOR */
@@ -19,28 +21,19 @@ ISR(TIMER1_OVF_vect) {
 		ADCSRA |= 1<<ADSC | 1<<ADIF;			/* Start conversion and reset interrupt flag */
 		while (~ADCSRA & 1<<ADIF);				/* Wait for conversion to finish */
 
-		if (ADC < 482) {						/* If ADC is lower than 482, cool the beer */
-			PORTB	|= (1<<6);					/* Set PB6 */
-			PORTB	&= ~(1<<7);					/* Clear PB7 */
-			lcd_cls();
-			lcd_puts("Het koelelement");
-			lcd_goto(1, 0);
-			lcd_puts("is aan.");
+		if (ADC < 482) {
+			status = 1;							/* If ADC is lower than 482, cool the beer */
+			PORTB	|= (1<<6);
+			PORTB	&= ~(1<<7);
 		}
-		else if (ADC > 532) {					/* If ADC is higher than 532, heat the beer */
-			PORTB	&= ~(1<<6);					/* Clear PB6 */
-			PORTB	|= (1<<7);					/* Set PB7 */
-			lcd_cls();
-			lcd_puts("Het verwarmings-");
-			lcd_goto(1, 0);
-			lcd_puts("element is aan.");
+		else if (ADC > 532) {
+			status = 2;							/* If ADC is higher than 532, heat the beer */
+			PORTB	&= ~(1<<6);
+			PORTB	|= (1<<7);
 		}
-		else {									/* Just about right! */
-			PORTB	&= ~((1<<7) | (1<<6));		/* Clear both PB6 and PB7 */
-			lcd_cls();
-			lcd_puts("De temperatuur");
-			lcd_goto(1, 0);
-			lcd_puts("is perfect!");
+		else {
+			status = 0;							/* Just about right! */
+			PORTB	&= ~((1<<7) | (1<<6));
 		}
 		
 		seconds = 0;							/* Reset the seconds-timer so we can count the next minute */
@@ -65,9 +58,29 @@ int main(void) {
 	ADCSRA	= 1<<ADEN | 1<<ADPS2 | 1<<ADPS0;	/* Enable the ADC, set ADC prescaler to 32 */
 
 	sei();										/* Enable interrupts */
-	
 	while(1) {
-		/* Idle infinitely unless an interrupt occurs */
+		/* Print the right text on the LCD display */
+		if (status == 0) {
+			lcd_puts("De temperatuur");
+			lcd_goto(1, 0);
+			lcd_puts("is perfect!");
+			lcd_home();
+		}
+		else if (status == 1) {
+			lcd_puts("Het koelelement");
+			lcd_goto(1, 0);
+			lcd_puts("is aan.");
+			lcd_home();
+		}
+		else if (status == 2) {
+			lcd_puts("Het verwarmings-");
+			lcd_goto(1, 0);
+			lcd_puts("element is aan.");
+			lcd_home();
+		}
+		else {
+			lcd_puts("uwotm8");
+		}
 	}
 	return 0;
 }
