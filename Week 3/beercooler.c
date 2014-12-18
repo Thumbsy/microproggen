@@ -20,23 +20,23 @@ ISR(TIMER1_OVF_vect) {
 		while (~ADCSRA & 1<<ADIF);				/* Wait for conversion to finish */
 
 		if (ADC < 482) {						/* If ADC is lower than 482, cool the beer */
-			PORTB	|= (1<<6);					/* Set PB6 */
-			PORTB	&= ~(1<<7);					/* Clear PB7 */
+			PORTB	|= (1<<7);					/* Set PB6 */
+			PORTB	&= ~(1<<6);					/* Clear PB7 */
 			lcd_cls();
 			lcd_puts("Het koelelement");
 			lcd_goto(1, 0);
 			lcd_puts("is aan.");
 		}
 		else if (ADC > 532) {					/* If ADC is higher than 532, heat the beer */
-			PORTB	&= ~(1<<6);					/* Clear PB6 */
-			PORTB	|= (1<<7);					/* Set PB7 */
+			PORTB	&= ~(1<<7);					/* Clear PB6 */
+			PORTB	|= (1<<6);					/* Set PB7 */
 			lcd_cls();
 			lcd_puts("Het verwarmings-");
 			lcd_goto(1, 0);
 			lcd_puts("element is aan.");
 		}
 		else {									/* Just about right! */
-			PORTB	&= ~((1<<7) | (1<<6));		/* Clear both PB6 and PB7 */
+			PORTB	|= (1<<7) | (1<<6);			/* Clear both PB6 and PB7 */
 			lcd_cls();
 			lcd_puts("De temperatuur");
 			lcd_goto(1, 0);
