@@ -1,0 +1,11 @@
+There are two main components: the main function and an interrupt based on TIMER0.
+The interrupt will be used to time the notes (length of notes and BPM of the tune) and to select the to-be-played note.
+The main function consists of an endless loop that will play a note from the table.
+
+1. Initialize all needed components (load timer and DDR registers with values and stuff)
+2. Select first note from the table.
+3. Play note.
+4. Then follows the timer interrupt which will switch off note playback. At the same time, a smaller value is loaded into OCR0 to create a short silence.
+5. The timer interrupt kicks in again and selects the next note while activating note playback again. OCR0 is loaded with a bigger value again for note length.
+6. Play next note.
+7. Step 3 to 5 are repeated endlessly.
