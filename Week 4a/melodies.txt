@@ -1,0 +1,38 @@
+One-shot jingle
+	/* Measure 01 */	G0,		G0,		G1,		G1,		R,		R,		G1,		G1,		R,		R,		G1,		G1,		R,		R,		G1,		G1,
+	/* Measure 02 */	R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		G1,		G1,
+	/* Measure 03 */	B0,		B0,		C1,		C1,		R,		R,		C1,		C1,		R,		R,		C1,		C1,		R,		R,		C1,		C1,
+	/* Measure 04 */	R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,		R,		R,		D1,		D1,
+	/* Measure 05 */	B0,		B0,		E1,		E1,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,
+	/* Measure 06 */	B0,		B0,		E1,		E1,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,
+	/* Measure 07 */	B0,		B0,		C1,		C1,		R,		R,		C1,		C1,		B0,		B0,		C1,		C1,		R,		R,		C1,		C1,
+	/* Measure 08 */	B0,		B0,		C1,		C1,		B0,		B0,		C1,		C1,		D1,		D1,		E1,		E1,		FIS1,	FIS1,	G1,		G1,
+	/* Measure 09 */	G0,		G0,		D1,		D1,		G1,		G1,		G0,		G0,		G1,		G1,		D1,		D1,		B0,		B0,		G1,		G1,
+	/* Measure 10 */	G0,		G0,		D1,		D1,		G1,		G1,		G0,		G0,		G1,		G1,		D1,		D1,		B0,		B0,		G1,		G1,
+	/* Measure 11 */	C1,		C1,		G1,		G1,		C2,		C2,		B0,		B0,		C1,		C1,		C2,		C2,		E1,		E1,		D1,		D1,
+	/* Measure 12 */	C1,		C1,		G1,		G1,		C2,		C2,		B0,		B0,		C1,		C1,		C2,		C2,		E1,		E1,		D1,		D1,
+	/* Measure 13 */	E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		D2,		D2,
+	/* Measure 14 */	E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		B1,		B1,		E1,		E1,		FIS2,	FIS2,	D2,		D2,
+	/* Measure 15 */	G2,		G2,		D1,		D1,		C1,		C1,		G2,		G2,		D2,		D2,		C1,		C1,		G2,		G2,		FIS2,	FIS2,
+	/* Measure 16 */	G2,		G2,		D1,		D1,		C1,		C1,		G2,		G2,		D2,		D2,		C1,		C1,		G2,		G2,		A2,		A2,
+	/* Measure 17 */	G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0, S
+
+Repeatable melody 1
+	/* Measure 01 */	AIS0,	AIS0,	AIS1,	R,		AIS1,	AIS1,	AIS0,	AIS1,	AIS1,	AIS0,	AIS1,	R,		AIS1,	R,		AIS0,	AIS1,
+	/* Measure 02 */	A0,		A0,		A1,		R,		A1,		A1,		A0,		A1,		A1,		A0,		A1,		R,		A1,		R,		A0,		A1,
+	/* Measure 03 */	C1,		C1,		C2,		R,		C2,		C2,		C1,		C2,		C2,		C1,		C2,		R,		C2,		R,		C1,		C2,
+	/* Measure 04 */	D1,		D1,		D2,		R,		D2,		D2,		D1,		D2,		D2,		D1,		D2,		R,		D2,		R,		D1,		D2,
+	/* Measure 05 */	AIS0,	AIS0,	AIS1,	R,		AIS1,	AIS1,	AIS0,	AIS1,	AIS1,	AIS0,	AIS1,	R,		AIS1,	R,		AIS0,	AIS1,
+	/* Measure 06 */	F1,		F1,		F2,		R,		F2,		F2,		F1,		F2,		F2,		F1,		F2,		R,		F2,		R,		F1,		F2,
+	/* Measure 07 */	C1,		C1,		C2,		R,		C2,		C2,		C1,		C2,		C2,		C1,		C2,		R,		C2,		R,		C1,		C2,
+	/* Measure 08 */	D1,		D1,		D2,		R,		D2,		D2,		D1,		D2,		D2,		D1,		D2,		D2,		E2,		D1,		F2,		F2, H
+
+Time (monophone square wave edit)
+	/* Measure 01 */	E2,		F0,		C2,		F0,		E2,		F0,		C2,		F0,		E2,		F0,		C2,		F0,		E2,		F0,		C2,		F0,
+	/* Measure 02 */	F2,		F0,		C2,		F0,		F2,		F0,		C2,		F0,		F2,		F0,		C2,		F0,		D2,		F0,		C2,		F0,
+	/* Measure 03 */	G2,		A0,		C2,		A0,		G2,		A0,		C2,		A0,		G2,		A0,		C2,		A0,		G2,		A0,		C2,		A0,
+	/* Measure 04 */	G2,		A0,		C2,		A0,		G2,		A0,		C2,		A0,		C2,		A0,		F2,		A0,		E2,		A0,		F2,		A0,	
+	/* Measure 05 */	G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,
+	/* Measure 06 */	G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,
+	/* Measure 07 */	A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,
+	/* Measure 08 */	A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		G2,		G0,		F2,		G0,		G2,		G0, H
