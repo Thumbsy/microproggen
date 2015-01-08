@@ -1,0 +1,7 @@
+(Kevin's concept of the program)
+
+-Use TIMER1_CAPT_vect interrupt
+-Inside the interrupt, save TCNT1 into first variable, i.e. 'time1'
+-Next time the interrupt vector is jumped to, shift the current 'time1' into 'time2' and save TCNT1 to 'time1'
+-The period can be calculated using the difference in clock counts between 'time1' and 'time2' (in main program)
+-Convert the clock ticks to microseconds and refresh the display every second (toggle display refreshing using TIMER0 interrupt?)
