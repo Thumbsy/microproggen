@@ -36,3 +36,29 @@ Time (monophone square wave edit)
 	/* Measure 06 */	G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,		G2,		G0,		B1,		G0,
 	/* Measure 07 */	A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,
 	/* Measure 08 */	A2,		G0,		B1,		G0,		A2,		G0,		B1,		G0,		A2,		G0,		G2,		G0,		F2,		G0,		G2,		G0, H
+
+Neckbreaker (monophone square wave edit)
+	/* Measure 01 */	AIS2,	AIS2,	FIS1,	FIS1,	AIS2,	AIS2,	FIS1,	FIS1,	C3,		C3,		FIS1,	FIS1,	CIS3,	CIS3,	C3,		C3,
+	/* Measure 02 */	AIS1,	AIS1,	CIS3,	CIS3,	GIS2,	GIS2,	AIS1,	AIS1,	GIS2,	GIS2,	AIS1,	AIS1,	GIS2,	GIS2,	AIS1,	AIS1,
+	/* Measure 03 */	DIS3,	DIS3,	GIS1,	GIS1,	CIS3,	CIS3,	GIS1,	GIS1,	C3,		C3,		GIS1,	GIS1,	CIS3,	CIS3,	C3,		C3,
+	/* Measure 04 */	FIS1,	FIS1,	CIS3,	CIS3,	AIS2,	AIS2,	FIS1,	FIS1,	AIS2,	AIS2,	FIS1,	FIS1,	GIS2,	GIS2,	FIS1,	FIS1, H
+
+Rising in the Sun (monophone square wave edit)
+	/* Measure 01 */	F0,		F0,		G1,		G1,		C2,		C2,		G2,		G2,		F0,		F0,		G1,		G1,		C2,		C2,		G2,		G2,
+	/* Measure 02 */	F0,		F0,		G1,		G1,		C2,		C2,		G2,		G2,		F0,		F0,		G1,		G1,		G2,		G2,		A2,		A2,
+	/* Measure 03 */	A0,		A0,		G1,		G1,		C2,		C2,		C3,		C3,		A0,		A0,		G1,		G1,		C2,		C2,		C3,		C3,
+	/* Measure 04 */	A0,		A0,		G1,		G1,		C2,		C2,		B2,		B2,		A0,		A0,		G1,		G1,		C2,		C2,		G2,		G2,
+	/* Measure 05 */	C1,		C1,		G1,		G1,		C2,		C2,		E2,		E2,		C1,		C1,		G1,		G1,		C2,		C2,		E2,		E2,
+	/* Measure 06 */	C1,		C1,		G1,		G1,		C2,		C2,		G2,		G2,		C1,		C1,		G1,		G1,		A2,		A2,		G2,		G2,
+	/* Measure 07 */	G0,		G0,		G1,		G1,		B1,		B1,		D2,		D2,		G0,		G0,		G1,		G1,		B1,		B1,		D2,		D2,
+	/* Measure 08 */	G0,		G0,		G1,		G1,		B1,		B1,		G2,		G2,		G0,		G0,		F2,		F2,		G0,		G0,		E2,		E2,
+
+Rising in the Sun 2 (monophone square wave edit)
+	/* Measure 01 */	C2,		C2,		F0,		F0,		C2,		C2,		F0,		C2,		F0,		C2,		C2,		C2,		B1,		B1,		G1,		G1,
+	/* Measure 02 */	F0,		F0,		C2,		F0,		C2,		F0,		C2,		B1,		F0,		F0,		C2,		F0,		G2,		F0,		B1,		D2,
+	/* Measure 03 */	C2,		C2,		A0,		A0,		C2,		C2,		A0,		C2,		A0,		C2,		C2,		C2,		B1,		B1,		G1,		G1,
+	/* Measure 04 */	A0,		A0,		D2,		A0,		D2,		A0,		D2,		E2,		E2,		A0,		E2,		A0,		E2,		G2,		B1,		C2,
+	/* Measure 05 */	C1,		C1,		C2,		C1,		C2,		C2,		B1,		C2,		C2,		C1,		C2,		C2,		D2,		D2,		E2,		E2,
+	/* Measure 06 */	C1,		C1,		G1,		C1,		G1,		C1,		G1,		G2,		G2,		C1,		G2,		G2,		F2,		F2,		E2,		E2,
+	/* Measure 07 */	D2,		D2,		G0,		G0,		D2,		D2,		G0,		D2,		G0,		C2,		C2,		G0,		B1,		B1,		C2,		C2,
+	/* Measure 08 */	G0,		G0,		G2,		G2,		C2,		C2,		B1,		C2,		C2,		B1,		A2,		A2,		G2,		G0,		C2,		G0, H
