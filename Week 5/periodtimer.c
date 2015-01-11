@@ -1,8 +1,8 @@
 #include <avr/io.h>
-#include <stdint.h>
-#include <math.h>
 #include <avr/interrupt.h>
-#include <avr/pgmspace.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <math.h>
 #include "lcd.h"
 
 volatile uint8_t update_display = 0;
@@ -20,8 +20,8 @@ ISR(TIMER0_OVF_vect) {
 }
 
 int main(void) {
-	uint16_t period_clk;
-	unsigned char period_us[1] PROGMEM = {0};
+	uint16_t period_clk, period_us;
+	char buffer[13];
 
 	PORTD	= 0xFF; 							/* Activate pull-up */
 
@@ -39,25 +39,24 @@ int main(void) {
 	sei();
 
 	while (1) {
-		while ((TIFR & (1<<ICF1)) == 0);
-		TCNT1 		= 0;								/* Making sure that TCNT1 begins at 0 */
-		TIFR		= (1<<ICF1);						/* Clear ICF1 on first */
+		while ((TIFR & (1<<ICF1)) == 0);					/* Wait for next clk edge */
+		TCNT1 		= 0;									/* Making sure that TCNT1 begins at 0 */
+		TIFR		= (1<<ICF1);							/* Clear ICF1 flag */
 
-		while ((TIFR & (1<<ICF1)) == 0);
-		period_clk 	= ICR1;
-		TIFR		= (1<<ICF1);						/* Clear ICF1 on second */
+		while ((TIFR & (1<<ICF1)) == 0);					/* Wait for next clk edge */
+		period_clk 	= ICR1;									/* Save the amount of time it took between the previous and this clk edge */
+		TIFR		= (1<<ICF1);							/* Clear ICF1 flag again */
 
 		if (update_display == 1) {
-			period_us[1] = round(period_clk * 0.271);	/* Calculating the actual period in microseconds */
+			period_us = round(period_clk * 0.271);						/* Calculating the last measured period in microseconds */
+			snprintf(buffer, sizeof buffer, "is: %5d us", period_us);	/* Create string (called buffer) that will soon be printed on the second line of the LCD display */
 
-		lcd_cls();
-		lcd_puts("De periodetijd");
-		lcd_goto(1, 0);
-		lcd_puts("is: ");
-		lcd_puts_P(period_us);							/* Print microseconds (not sure if this works) */
-		lcd_puts(" us");
+			lcd_cls();
+			lcd_puts("De periodetijd");
+			lcd_goto(1, 0);
+			lcd_puts(buffer);											/* Print second line with microseconds */
 
-			update_display = 0;							/* Turn off display updating again */
+			update_display = 0;											/* Turn off display updating again */
 		}
 	}
 	return 0;
