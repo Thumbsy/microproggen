@@ -19,30 +19,21 @@ ISR(TIMER0_OVF_vect) {
 
 /* This interrupt generates the square wave for the sound */
 ISR(TIMER1_COMPA_vect) {
-	/* Nothing needs to be done,	 OC1A is automatically inverted */
+	/* Nothing needs to be done, OC1A is automatically inverted */
 }
 
 int main(void) {
-	uint8_t		index = 0;
+	volatile uint16_t	index = 0;
 	uint16_t	musicnotes[] = {
 	/*					|			beat 1				|			beat 2				|			beat 3				|			beat 4 		|	*/
-	/* Measure 01 */	G0,		G0,		G1,		G1,		R,		R,		G1,		G1,		R,		R,		G1,		G1,		R,		R,		G1,		G1,
-	/* Measure 02 */	R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		G1,		G1,
-	/* Measure 03 */	B0,		B0,		C1,		C1,		R,		R,		C1,		C1,		R,		R,		C1,		C1,		R,		R,		C1,		C1,
-	/* Measure 04 */	R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,		R,		R,		D1,		D1,
-	/* Measure 05 */	B0,		B0,		E1,		E1,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,
-	/* Measure 06 */	B0,		B0,		E1,		E1,		R,		R,		R,		R,		R,		R,		R,		R,		R,		R,		D1,		D1,
-	/* Measure 07 */	B0,		B0,		C1,		C1,		R,		R,		C1,		C1,		B0,		B0,		C1,		C1,		R,		R,		C1,		C1,
-	/* Measure 08 */	B0,		B0,		C1,		C1,		B0,		B0,		C1,		C1,		D1,		D1,		E1,		E1,		FIS1,	FIS1,	G1,		G1,
-	/* Measure 09 */	G0,		G0,		D1,		D1,		G1,		G1,		G0,		G0,		G1,		G1,		D1,		D1,		B0,		B0,		G1,		G1,
-	/* Measure 10 */	G0,		G0,		D1,		D1,		G1,		G1,		G0,		G0,		G1,		G1,		D1,		D1,		B0,		B0,		G1,		G1,
-	/* Measure 11 */	C1,		C1,		G1,		G1,		C2,		C2,		B0,		B0,		C1,		C1,		C2,		C2,		E1,		E1,		D1,		D1,
-	/* Measure 12 */	C1,		C1,		G1,		G1,		C2,		C2,		B0,		B0,		C1,		C1,		C2,		C2,		E1,		E1,		D1,		D1,
-	/* Measure 13 */	E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		D2,		D2,
-	/* Measure 14 */	E2,		E2,		B1,		B1,		E1,		E1,		E2,		E2,		B1,		B1,		E1,		E1,		FIS2,	FIS2,	D2,		D2,
-	/* Measure 15 */	G2,		G2,		D1,		D1,		C1,		C1,		G2,		G2,		D2,		D2,		C1,		C1,		G2,		G2,		FIS2,	FIS2,
-	/* Measure 16 */	G2,		G2,		D1,		D1,		C1,		C1,		G2,		G2,		D2,		D2,		C1,		C1,		G2,		G2,		A2,		A2,
-	/* Measure 17 */	G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0,		G0, S
+	/* Measure 01 */	C2,		C2,		F0,		F0,		C2,		C2,		F0,		C2,		F0,		C2,		C2,		C2,		B1,		B1,		G1,		G1,
+	/* Measure 02 */	F0,		F0,		C2,		F0,		C2,		F0,		C2,		B1,		F0,		F0,		C2,		F0,		G2,		F0,		B1,		D2,
+	/* Measure 03 */	C2,		C2,		A0,		A0,		C2,		C2,		A0,		C2,		A0,		C2,		C2,		C2,		B1,		B1,		G1,		G1,
+	/* Measure 04 */	A0,		A0,		D2,		A0,		D2,		A0,		D2,		E2,		E2,		A0,		E2,		A0,		E2,		G2,		B1,		C2,
+	/* Measure 05 */	C1,		C1,		C2,		C1,		C2,		C2,		B1,		C2,		C2,		C1,		C2,		C2,		D2,		D2,		E2,		E2,
+	/* Measure 06 */	C1,		C1,		G1,		C1,		G1,		C1,		G1,		G2,		G2,		C1,		G2,		G2,		F2,		F2,		E2,		E2,
+	/* Measure 07 */	D2,		D2,		G0,		G0,		D2,		D2,		G0,		D2,		G0,		C2,		C2,		G0,		B1,		B1,		C2,		C2,
+	/* Measure 08 */	G0,		G0,		G2,		G2,		C2,		C2,		B1,		C2,		C2,		B1,		A2,		A2,		G2,		G0,		C2,		G0, H
 	};
 	
 	DDRD	= 0x20; /* Set PD5 as output */
@@ -69,28 +60,27 @@ int main(void) {
 		if (playnote == 1) {
 			
 			DDRD	= 0x20;							/* Dirty hack to re-enable speaker */
-			/* If no rest,	 repeat,	 stop or invalid index number is selected */
-			if (musicnotes[index] > 3 || (index < (sizeof(musicnotes) / sizeof(musicnotes[0])))) {
+			/* If no rest, repeat, stop or invalid index number is selected */
+			if (musicnotes[index] > 3) {
 				OCR1A = musicnotes[index];			/* Load current note and select the next one */
-				TIMSK	|= 1<<OCIE1A;				/* Enable OCR1A output compare interrupt (in case it was disabled) */
 				index++;
 			}
 			/* If there's a rest */
 			else if (musicnotes[index] == 2) {
-				TIMSK	&= ~(1<<OCIE1A);			/* Temporarily disable OCR1A output compare interrupt (not working?) */
 				PORTD	= 0x20;						/* Force high on output to prevent clicks */
 				DDRD	= 0x00;						/* Dirty hack to disable speaker */
 				index++;							/* Select next note */
 			}
 			/* If we reached the end of the tune and should repeat */
 			else if (musicnotes[index] == 1) {
-				index = 0;							/* End of the tune,	 select the first note again */
+				index = 0;							/* End of the tune, select the first note again */
 				OCR1A = musicnotes[index];
 				index++;
 			}
 			/* If we should stop */
 			else {
-				TIMSK	&= ~(1<<OCIE1A | 1<<TOIE0); /* Disable all interrupts,	 effectively making the program stop doing things */
+				cli();
+				DDRD	= 0x00;						/* Dirty hack to disable speaker */
 			}
 
 			playnote = 0;

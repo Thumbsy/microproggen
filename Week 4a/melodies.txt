@@ -51,7 +51,7 @@ Rising in the Sun (monophone square wave edit)
 	/* Measure 05 */	C1,		C1,		G1,		G1,		C2,		C2,		E2,		E2,		C1,		C1,		G1,		G1,		C2,		C2,		E2,		E2,
 	/* Measure 06 */	C1,		C1,		G1,		G1,		C2,		C2,		G2,		G2,		C1,		C1,		G1,		G1,		A2,		A2,		G2,		G2,
 	/* Measure 07 */	G0,		G0,		G1,		G1,		B1,		B1,		D2,		D2,		G0,		G0,		G1,		G1,		B1,		B1,		D2,		D2,
-	/* Measure 08 */	G0,		G0,		G1,		G1,		B1,		B1,		G2,		G2,		G0,		G0,		F2,		F2,		G0,		G0,		E2,		E2,
+	/* Measure 08 */	G0,		G0,		G1,		G1,		B1,		B1,		G2,		G2,		G0,		G0,		F2,		F2,		G0,		G0,		E2,		E2, H
 
 Rising in the Sun 2 (monophone square wave edit)
 	/* Measure 01 */	C2,		C2,		F0,		F0,		C2,		C2,		F0,		C2,		F0,		C2,		C2,		C2,		B1,		B1,		G1,		G1,
