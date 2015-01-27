@@ -1,0 +1,9 @@
+PC side:
+1. Check whether 5 seconds have passed (if that's the case, the current time_t is saved in some variable and next time time_t will be checked against this variable)
+	1.1 If 5 seconds have passed, send the signal to the AVR to tell it to start measuring. One simple character like 'S' should do.
+2. Check whether data has been received from the AVR
+	2.1 If data has been received, output it into the text file along with timestamp
+
+AVR side:
+1. Check whether start signal 'S' has been received.
+	1.1 If received, measure ADC, calculate and convert value into a string and send that over USART back to the PC.
